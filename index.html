@@ -476,6 +476,18 @@
     box-shadow: 0 0 4px rgba(255,255,255,0.6);
 }
 
+/* 音乐播放器随实际屏幕高度缩放；设置面板始终可滚动至保存按钮。 */
+#phone-music-screen { container-type:size; overflow:hidden !important; }
+#phone-music-screen[style*="display: block"] { display:flex !important; flex-direction:column; }
+#phone-music-screen .music-screen-header { flex:0 0 40px; z-index:1; }
+#phone-music-screen .music-player-content { flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:clamp(6px,2cqh,15px) 15px max(42px,env(safe-area-inset-bottom)) !important; }
+#phone-music-screen #music-vinyl { width:clamp(92px,25cqh,170px) !important; height:clamp(92px,25cqh,170px) !important; flex:none; box-sizing:border-box; border-width:clamp(6px,1.5cqh,10px) !important; }
+#phone-music-screen #music-song-name { margin-top:clamp(8px,3cqh,25px) !important; max-width:100%; overflow-wrap:anywhere; }
+#phone-music-screen #music-lyrics-box { height:auto !important; min-height:32px; max-height:70px; overflow-y:auto; white-space:pre-line; margin-top:clamp(6px,2cqh,15px) !important; }
+#phone-music-screen #music-lyrics-box + div { margin-top:clamp(7px,2cqh,15px) !important; }
+#phone-music-screen #music-lyrics-box + div + div { margin-top:clamp(8px,2cqh,15px) !important; flex-shrink:0; }
+#phone-music-screen #music-config-modal { inset:0; width:100%; height:100%; padding:52px 16px max(44px,env(safe-area-inset-bottom)) !important; overflow-y:auto; overscroll-behavior:contain; }
+#phone-music-screen #music-config-modal > div:last-child { flex-shrink:0; padding-bottom:8px; }
 /* 情侣空间 */
 .couple-screen{--couple-accent:#e66f9c;--couple-bg:#fff1f6;background:var(--couple-bg);color:#61495e;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow:hidden}
 .couple-screen:before{content:'';position:absolute;inset:0;background-image:var(--couple-image,none);background-size:cover;background-position:center;opacity:.32;pointer-events:none}
@@ -498,6 +510,20 @@
 .couple-log-item{align-self:flex-start;max-width:85%;background:rgba(255,255,255,.9);padding:9px 12px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}.couple-log-item.from-me{align-self:flex-end;background:#f8d9e8}.couple-log-item b{display:block;color:var(--couple-accent);font-size:10px;margin-bottom:4px}.couple-empty{text-align:center;font-size:12px;padding:22px;color:#927d90}
 .couple-compose{display:flex;gap:8px;margin-top:12px;align-items:center}.couple-compose button{flex-shrink:0}
 .couple-modal{position:absolute;inset:0;background:#2b172680;z-index:3100;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}.couple-modal-card{background:#fffafb;border-radius:22px;padding:18px;width:100%;max-width:350px;display:flex;flex-direction:column;gap:7px;color:#61495e;max-height:85%;overflow-y:auto}.couple-modal-card h3{margin:0 0 8px}.couple-modal-card label{font-size:12px;margin-top:5px}.couple-modal-card input[type=color]{height:40px;padding:3px}.couple-modal-buttons{display:flex;justify-content:flex-end;gap:9px;margin-top:12px}
+.wx-composer{position:absolute;left:0;right:0;bottom:40px;min-height:54px;padding:8px 8px 9px;background:#f8f8f8;border-top:1px solid #e2e2e2;box-sizing:border-box;display:flex;align-items:center;gap:6px;z-index:31}
+.wx-compose-icon{border:0;background:transparent;color:#242424;width:29px;height:34px;flex:0 0 29px;padding:2px;display:grid;place-items:center;font-size:26px;cursor:pointer}
+.wx-compose-field{min-width:0;flex:1;display:flex;align-items:center;border-radius:8px;background:#fff;height:36px;padding:0 2px 0 8px}
+.wx-compose-field input{min-width:0;width:100%;flex:1;border:0;outline:0;background:transparent;color:#202020;font-size:13px}
+.wx-compose-field .wx-compose-icon{width:28px;flex-basis:28px}
+.wx-send-button,.wx-reply-button{border:0;border-radius:7px;min-height:34px;white-space:nowrap;padding:0 8px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.wx-send-button{background:#95ec69;color:#1e391a}.wx-reply-button{background:#ece9f7;color:#6a5493}
+.wx-reply-button:disabled{opacity:.6;cursor:default}
+.wx-sticker-panel,.wx-more-panel{position:absolute;left:8px;right:8px;bottom:calc(100% + 4px);border-radius:14px;background:#fff;box-shadow:0 -6px 24px #0002;max-height:min(230px,40vh);overflow:auto;padding:12px;box-sizing:border-box}
+.wx-sticker-panel[hidden],.wx-more-panel[hidden]{display:none!important}
+.wx-sticker-heading{display:flex;justify-content:space-between;align-items:center;font-size:12px}.wx-sticker-heading button,.wx-more-panel button{border:0;border-radius:8px;background:#f3f3f5;padding:8px;font-size:11px;color:#444}
+.wx-sticker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.wx-sticker-grid button{border:0;background:#f7f7f7;border-radius:8px;padding:3px;aspect-ratio:1}.wx-sticker-grid img{width:100%;height:100%;object-fit:contain}
+.wx-more-panel{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.wx-thought{display:flex;gap:8px;align-items:flex-start;margin:0 0 4px}.wx-thought-avatar{width:34px;height:34px;border-radius:6px;background-size:cover;background-position:center;flex:none}.wx-thought details{max-width:75%;font-size:11px;color:#656565}.wx-thought summary{cursor:pointer;background:#f5f5f5;padding:6px 9px;border-radius:8px;list-style:none}.wx-thought summary:before{content:'▶';font-size:9px;margin-right:6px}.wx-thought details[open] summary:before{content:'▼'}.wx-thought-content{background:#fff;padding:8px 10px;border-radius:8px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:4px}
+@media(max-width:340px){.wx-composer{gap:3px;padding-left:4px;padding-right:4px}.wx-send-button,.wx-reply-button{padding:0 5px;font-size:10px}}
 </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>
       <script>
@@ -1094,22 +1120,19 @@
                         </div>
                         <div onclick="openEditModal()" style="cursor: pointer; display:flex; align-items:center;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px; height:20px;"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg></div>
                     </div>
-                    <div id="chat-bg-box" style="height: calc(100% - 40px - 97px); padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; background-size: cover; background-position: center; background-color: #f3f3f3;">
+                    <div id="chat-bg-box" style="height: calc(100% - 40px - 92px); padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; background-size: cover; background-position: center; background-color: #f3f3f3;">
                         <div style="text-align: center; color: #b2b2b2; font-size: 10px; margin-bottom: 5px; background: rgba(0,0,0,0.05); padding: 4px 10px; border-radius: 10px; align-self: center;">系统连接成功，快打个招呼吧</div>
                         <div id="msg-stream" style="display: flex; flex-direction: column; gap: 12px;"></div>
                     </div>
-                    <div style="display: flex; align-items: center; height: 55px; padding-bottom:10px; background-color: #f7f7f7; border-top: 1px solid #d1d1d1; padding-left: 8px; padding-right: 8px; gap: 6px; position: absolute; bottom: 42px; width: 100%; box-sizing: border-box;">
-                        <div onclick="document.getElementById('image-upload-input').click()" style="cursor: pointer; flex-shrink: 0; display:flex; align-items:center;"><svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="2" style="width:24px; height:24px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
-                        <input type="file" id="image-upload-input" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-                        
-                        <!-- 转账图标 -->
-                        <div onclick="triggerTransferPopup('transfer')" style="cursor: pointer; flex-shrink: 0; display:flex; align-items:center;"><svg viewBox="0 0 24 24" fill="none" stroke="#ff9800" stroke-width="2" style="width:24px; height:24px;"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></div>
-                        
-                        <!-- 送礼图标 -->
-                        <div onclick="triggerTransferPopup('gift')" style="cursor: pointer; flex-shrink: 0; display:flex; align-items:center; font-size:22px; line-height:1;">🎁</div>
-
-                        <input id="chat-input" type="text" style="flex: 1; height: 32px; border: 1px solid #d1d1d1; border-radius: 6px; padding: 0 8px; font-size: 13px; outline: none; background: #fff; min-width: 40px;">
-                        <button onclick="sendMyMessage()" style="height: 32px; background-color: #07c160; color: white; border: none; border-radius: 6px; padding: 0 10px; font-size: 12px; font-weight: bold; cursor: pointer; white-space: nowrap; flex-shrink: 0; min-width: 45px;">发送</button>
+                    <div class="wx-composer">
+                        <div id="wx-sticker-panel" class="wx-sticker-panel" hidden><div class="wx-sticker-heading"><b>我的表情包</b><button type="button" onclick="document.getElementById('sticker-upload-input').click()">＋ 添加图片</button></div><div id="wx-sticker-grid" class="wx-sticker-grid"></div></div>
+                        <div id="wx-more-panel" class="wx-more-panel" hidden><button type="button" onclick="document.getElementById('image-upload-input').click()">发图片</button><button type="button" onclick="triggerTransferPopup('transfer')">转账</button><button type="button" onclick="triggerTransferPopup('gift')">送礼</button><button type="button" onclick="requestWxReply(true)">让 TA 主动说</button></div>
+                        <input type="file" id="image-upload-input" accept="image/*" hidden onchange="handleImageUpload(event)">
+                        <input type="file" id="sticker-upload-input" accept="image/*" hidden onchange="addWxSticker(event)">
+                        <button class="wx-compose-icon" type="button" onclick="toggleWxMorePanel()" aria-label="更多功能">＋</button>
+                        <div class="wx-compose-field"><input id="chat-input" type="text" placeholder="发消息…" onkeydown="if(event.key==='Enter')sendMyMessage()"><button class="wx-compose-icon" type="button" onclick="toggleWxStickerPanel()" aria-label="表情包"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r=".8" fill="currentColor"/><circle cx="15" cy="10" r=".8" fill="currentColor"/><path d="M8 15c2 2.4 6 2.4 8 0"/></svg></button></div>
+                        <button class="wx-send-button" type="button" onclick="sendMyMessage()">发送</button>
+                        <button id="wx-reply-button" class="wx-reply-button" type="button" onclick="requestWxReply(false)">让 TA 回复</button>
                     </div>
                 </>
 
@@ -1307,12 +1330,12 @@
             <!-- 🎵 网易云音乐 App -->
             <div id="phone-music-screen" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, #2b2b2b, #111); background-size: cover; background-position: center; z-index: 105; padding-top: 48px; box-sizing: border-box; color:#fff;">
                 <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:-1;"></div>
-                <div style="display: flex; align-items: center; justify-content: center; height: 40px; background-color: transparent; position:relative;">
+                <div class="music-screen-header" style="display: flex; align-items: center; justify-content: center; height: 40px; background-color: transparent; position:relative;">
                     <span style="font-size: 14px; font-weight: 600; text-shadow:0 1px 2px #000;">轻奏一曲</span>
                     <span onclick="document.getElementById('music-config-modal').style.display='flex'" style="position:absolute; right:15px; font-size:12px; color:#ccc; cursor:pointer; text-shadow:0 1px 2px #000;">设置</span>
                 </div>
 
-                <div style="display:flex; flex-direction:column; align-items:center; padding:15px; box-sizing:border-box; text-align:center;">
+                <div class="music-player-content" style="display:flex; flex-direction:column; align-items:center; padding:15px; box-sizing:border-box; text-align:center;">
                     <div style="display:flex; justify-content:center; align-items:center; margin-bottom: 5px;">
                         <div id="music-avatar-me" style="width:45px; height:45px; border-radius:50%; background:#ddd; background-size:cover; border:2px solid #fff; z-index:2;"></div>
                         <div id="music-avatar-ai" style="width:45px; height:45px; border-radius:50%; background:#aaa; background-size:cover; border:2px solid #fff; margin-left:-15px; z-index:1;"></div>
@@ -4241,9 +4264,13 @@ async function respondToLike(moment) {
             } else if (typeof text === 'string' && text.startsWith && text.startsWith('img_')) {
                 text = await dbGetImage(text) || text;
             }
-            if (m.kind === 'voice' && m.voiceId) renderVoiceBubble(m, f);
+            if (m.kind === 'thought') renderWxThought(m.content, f);
+            else if (m.kind === 'sticker') await renderWxSticker(m.content, m.role === 'user', f);
+            else if (m.kind === 'voice' && m.voiceId) renderVoiceBubble(m, f);
             else renderBubble(text, m.role === 'user', fAvatarUrl);
         }
+        renderWxStickerPicker();
+        updateWxReplyButton();
         scrollToBottom();
     }
 
@@ -4357,6 +4384,87 @@ async function respondToLike(moment) {
 }
     function deleteCurrentFriend() { if(confirm("确定抹除该角色吗？")) { friendsList = friendsList.filter(f => f.id !== activeFriendId); saveDataLocally(); closeEditModal(); closeChatRoom(); if(currentWxTab==='contacts') {closeContactProfile(); renderContactsList();} } }
     function scrollToBottom() { const b = document.getElementById('chat-bg-box'); b.scrollTop = b.scrollHeight; }
+
+    let wxReplyBusy = false;
+    function wxPendingCount(f) {
+        if (!f) return 0;
+        const flagged = f.history.filter(m => m.role === 'user' && m.wxNeedsReply === true).length;
+        if (flagged) return flagged;
+        let count = 0;
+        for (let i = f.history.length - 1; i >= 0; i--) {
+            if (f.history[i].role === 'assistant' && f.history[i].kind !== 'thought') break;
+            if (f.history[i].role === 'user') count++;
+        }
+        return count;
+    }
+    function updateWxReplyButton() {
+        const f = friendsList.find(fr => fr.id === activeFriendId);
+        const button = document.getElementById('wx-reply-button');
+        if (!button) return;
+        const count = wxPendingCount(f);
+        button.textContent = wxReplyBusy ? '回复中…' : count ? `回复 ${count} 条` : '让 TA 回复';
+        button.disabled = wxReplyBusy;
+    }
+    function toggleWxStickerPanel() {
+        const panel = document.getElementById('wx-sticker-panel');
+        const show = panel.hidden;
+        document.getElementById('wx-more-panel').hidden = true;
+        panel.hidden = !show;
+        if (show) renderWxStickerPicker();
+    }
+    function toggleWxMorePanel() {
+        const panel = document.getElementById('wx-more-panel');
+        document.getElementById('wx-sticker-panel').hidden = true;
+        panel.hidden = !panel.hidden;
+    }
+    function wxEscape(text) { return String(text ?? '').replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x])); }
+    function renderWxThought(text, f) {
+        if (activeFriendId !== f.id || !text) return;
+        const row = document.createElement('div'); row.className = 'wx-thought';
+        const avatar = document.createElement('div'); avatar.className = 'wx-thought-avatar';
+        const url = resolveImgUrl(f.avatarUrl);
+        if (url) avatar.style.backgroundImage = `url("${url}")`;
+        const details = document.createElement('details');
+        const summary = document.createElement('summary'); summary.textContent = '角色心声';
+        const content = document.createElement('div'); content.className = 'wx-thought-content'; content.textContent = text;
+        details.append(summary,content);row.append(avatar,details);
+        document.getElementById('msg-stream').appendChild(row);scrollToBottom();
+    }
+    async function renderWxSticker(id, isMe, f) {
+        const sticker = (sysData.wxStickers || []).find(item => item.id === id);
+        const url = (sticker && await getImageUrl(sticker.imageId)) || (id.startsWith('data:image/') ? id : '');
+        if (activeFriendId !== f.id) return;
+        if (url) renderBubble(url, isMe, f.avatarUrl);
+        else renderBubble('[表情包已丢失]', isMe, f.avatarUrl);
+    }
+    async function renderWxStickerPicker() {
+        const grid = document.getElementById('wx-sticker-grid');
+        grid.replaceChildren();
+        const items = sysData.wxStickers || [];
+        if (!items.length) { grid.textContent = '还没有表情包，点「添加图片」上传。'; return; }
+        for (const item of items) {
+            const button = document.createElement('button');button.type = 'button';button.title = item.name || '表情包';
+            const img = document.createElement('img');img.alt = item.name || '表情包';img.src = await getImageUrl(item.imageId) || '';
+            button.onclick = () => sendWxSticker(item.id);
+            button.appendChild(img);grid.appendChild(button);
+        }
+    }
+    async function addWxSticker(event) {
+        const file = event.target.files?.[0];if (!file) return;
+        try {
+            const {id,imageId,dataUrl} = await compressImage(file, 512, .85);
+            const stickerId = 'sticker_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+            (sysData.wxStickers ||= []).push({id:stickerId,imageId:id || imageId,name:file.name.replace(/\.[^.]+$/,'').slice(0,20)});
+            saveDataLocally();await renderWxStickerPicker();
+        } catch(error) { console.error(error);showToast('表情包添加失败'); }
+        event.target.value = '';
+    }
+    async function sendWxSticker(id) {
+        const f = friendsList.find(fr => fr.id === activeFriendId);if (!f) return;
+        f.history.push({role:'user',kind:'sticker',content:id,wxNeedsReply:true});
+        await renderWxSticker(id,true,f);saveDataLocally();
+        document.getElementById('wx-sticker-panel').hidden = true;updateWxReplyButton();
+    }
 
         function renderBubble(content, isMe, avatar) {
         const stream = document.getElementById('msg-stream'); let inside = content; let isSpecial = false;
@@ -4592,8 +4700,8 @@ async function respondToLike(moment) {
         
         const f = friendsList.find(fr => fr.id === activeFriendId); 
         const contentText = `[Transfer|${val.toFixed(2)}|${note}|to_ai]`; 
-        f.history.push({role: "user", content: contentText}); renderBubble(contentText, true, f.avatarUrl);
-        fetchAIResponse();
+        f.history.push({role: "user", content: contentText, wxNeedsReply:true}); renderBubble(contentText, true, f.avatarUrl);
+        updateWxReplyButton();
     }
 
     // 🌟 新增：执行微信内送礼操作
@@ -4611,9 +4719,9 @@ async function respondToLike(moment) {
         
         const f = friendsList.find(fr => fr.id === activeFriendId); 
         const contentText = `[Gift|${itemName}|to_ai]`; 
-        f.history.push({role: "user", content: contentText}); 
+        f.history.push({role: "user", content: contentText, wxNeedsReply:true}); 
         renderBubble(contentText, true, f.avatarUrl);
-        fetchAIResponse();
+        updateWxReplyButton();
     }
         async function handleImageUpload(e) {
         const file = e.target.files[0]; if(!file) return;
@@ -4622,20 +4730,35 @@ async function respondToLike(moment) {
             const f = friendsList.find(fr => fr.id === activeFriendId);
             const url = await dbGetImage(id);
             if (url) renderBubble(url, true, f.avatarUrl);  // 显示时从DB拿回base64
-            f.history.push({role:"user", content:[
+            f.history.push({role:"user", wxNeedsReply:true, content:[
                 {type:"text", text:"（分享了一张图片给你）"},
                 {type:"image_url", image_url:{url: url || ''}}
             ]});
-            fetchAIResponse();
+            saveDataLocally(); updateWxReplyButton();
         } catch(err) { console.error(err); alert('图片处理失败，请换一张图片试试'); }
         e.target.value = '';
     }
 
-    function sendMyMessage() { const input = document.getElementById('chat-input'); const text = input.value.trim(); if(!text) return; const f = friendsList.find(fr => fr.id === activeFriendId); renderBubble(text, true, f.avatarUrl); f.history.push({role:"user", content:text}); saveDataLocally(); input.value = ''; fetchAIResponse(); }
+    function sendMyMessage() {
+        const input = document.getElementById('chat-input');const text = input.value.trim();if(!text) return;
+        const f = friendsList.find(fr => fr.id === activeFriendId);if(!f) return;
+        renderBubble(text,true,f.avatarUrl);f.history.push({role:'user',content:text,wxNeedsReply:true});
+        saveDataLocally();input.value='';updateWxReplyButton();
+    }
+    function requestWxReply(proactive = false) {
+        if(wxReplyBusy || !activeFriendId) return;
+        const f = friendsList.find(fr => fr.id === activeFriendId);if(!f) return;
+        if(proactive) document.getElementById('wx-more-panel').hidden = true;
+        wxReplyBusy = true;updateWxReplyButton();
+        Promise.resolve(fetchAIResponse(proactive)).catch(error => {console.error(error);showToast('回复失败，请重试');})
+            .finally(() => {wxReplyBusy = false;updateWxReplyButton();});
+    }
 
     /* STREAMING_CHUNK: 优化 AI 角色扮演逻辑与双向转账/送礼体系 */
-    async function fetchAIResponse() {
+    async function fetchAIResponse(proactive = false) {
     const f = friendsList.find(fr => fr.id === activeFriendId);
+    if(!f) return;
+    const pendingAtStart = f.history.filter(m => m.role === 'user' && m.wxNeedsReply === true);
     if(!f.memorySummary) f.memorySummary = "";
     if(typeof f.summarizedUpTo !== 'number') f.summarizedUpTo = 0;
     if(typeof f.affection !== 'number') f.affection = 10; // 兼容旧数据
@@ -4682,24 +4805,40 @@ ${getCharacterMemoryContext(f) || '暂无长期记忆；参考下面的近期对
 - 人设若规定动作描写、括号或特殊格式，保留这种表达；其他情况优先写自然的聊天内容。
 - 回复前自行核对：这句话是否只有这个角色会说？是否与人设、对方身份和已经发生的事一致？核对过程不要输出。
 
+【角色心声和连发消息】
+- 正式回复前先写一小段给用户看的角色视角心声，格式为 <心声>一句简短的角色心声</心声>。这是剧情里的心声，不是你的内部推理过程；不要分析提示词、规则或模型工作过程。
+- 标签之后只写角色发出的微信消息；一行一条，可以依照角色性格发1到6条，不必强制凑满。最近用户连续发的消息都要看完再回复。
+- 若你想发已有表情包，只能单独一行输出下方列出的 [Sticker|编号]，不要虚构编号。
+${(sysData.wxStickers || []).length ? '可用表情包：' + sysData.wxStickers.map((s,i)=>`[Sticker|${i+1}] ${s.name || '表情包'}`).join('；') : '目前没有可用表情包。'}
+${proactive ? '这轮是角色主动发起话题。根据人设和已有聊天自然开口，不假装用户刚刚说了新话。' : ''}
+
 【转账/送礼机制】（格式必须严格）：
 - 收到转账"[Transfer|金额|备注|to_ai]"→ 首行输出 [TransferReceipt|金额|accept] 或 [TransferReceipt|金额|refund]，换行后写回复
 - 收到礼物"[Gift|物品名|to_ai]"→ 用角色性格回应
 - 想送礼→ 首行输出 [Gift|物品名|to_user]，换行后写话
-- 正常聊天直接输出文字，不加任何前缀`;
+- 正常聊天在心声标签之后直接输出消息文字，不加其他前缀`;
 
     let len = f.maxContext || 10; 
-    let slicedHistory = f.history.slice(-len);
+    let slicedHistory = f.history.filter(m => m.kind !== 'thought').slice(-len);
     let chatMessages = slicedHistory.map(m => ({
         role: m.role === 'user' ? 'user' : 'assistant',
-        content: m.content  // ✅ 直接透传，不 stringify
+        content: m.kind === 'sticker' ? `[表情包：${(sysData.wxStickers || []).find(s=>s.id===m.content)?.name || '图片'}]` : m.content
     }));
+    if (proactive) chatMessages.push({role:'user',content:'（此刻你想主动发一条微信消息给对方。）'});
 
     const reply = await genericAICall(chatMessages, systemPrompt);
     document.getElementById('typing-indicator').style.display = 'none';
 
     if(reply) {
         let finalReply = reply;
+        const thoughtMatch = finalReply.match(/<心声>([\s\S]*?)<\/心声>/);
+        finalReply = finalReply.replace(/<心声>[\s\S]*?<\/心声>/g,'').trim();
+        if(thoughtMatch?.[1]?.trim()) {
+            const thought = {role:'assistant',kind:'thought',content:thoughtMatch[1].trim().slice(0,260)};
+            f.history.push(thought);
+            renderWxThought(thought.content,f);
+            saveDataLocally();
+        }
         
         // 拦截解析：AI处理收款或退还
         let receiptMatch = finalReply.match(/\[TransferReceipt\|(.*?)\|(.*?)\]/);
@@ -4736,6 +4875,8 @@ ${getCharacterMemoryContext(f) || '暂无长期记忆；参考下面的近期对
 
         const bubbleLines = splitReplyIntoBubbles(finalReply);
         await sendBubblesSequentially(bubbleLines, f);
+        if (bubbleLines.length) pendingAtStart.forEach(m => { m.wxNeedsReply = false; });
+        saveDataLocally();updateWxReplyButton();
 
         // ✅ 新增：对话结束后更新好感度
         const lastUserMsg = slicedHistory.length > 0 ? slicedHistory[slicedHistory.length - 1].content : '';
@@ -4789,8 +4930,8 @@ function splitReplyIntoBubbles(reply) {
 
     rawLines = rawLines.map(stripActionNarration).filter(l => l.length > 0);
 
-    // 最多保留3条气泡，超出的部分合并进最后一条，避免刷屏
-    const MAX_BUBBLES = 3;
+    // 允许角色像真实聊天那样连发；仍限制极端长回复占满屏幕。
+    const MAX_BUBBLES = 8;
     if (rawLines.length > MAX_BUBBLES) {
         const head = rawLines.slice(0, MAX_BUBBLES - 1);
         const tail = rawLines.slice(MAX_BUBBLES - 1).join(' ');
@@ -4812,6 +4953,16 @@ async function sendBubblesSequentially(lines, f) {
             document.getElementById('typing-indicator').style.display = 'none';
         }
         const text = lines[i];
+        const stickerMatch = /^\[Sticker\|(\d+)\]$/.exec(text);
+        if (stickerMatch) {
+            const sticker = (sysData.wxStickers || [])[Number(stickerMatch[1]) - 1];
+            if (sticker) {
+                const message = {role:'assistant',kind:'sticker',content:sticker.id};
+                f.history.push(message);
+                await renderWxSticker(sticker.id,false,f);
+                continue;
+            }
+        }
         const voiceEligible = i === lines.length - 1 && sysData.voiceApiEnabled && text && !text.includes('[') && text.length <= 300;
         let voiceId = null;
         if (voiceEligible) {
